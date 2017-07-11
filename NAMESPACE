@@ -1,0 +1,8 @@
+import(mclust)
+
+importFrom("stats", "dlnorm", "dnorm", "median", "optim", "quantile",
+           "sd", "var")
+
+# Exported functions
+export(SIBER, fitLN, fitNB, fitGP, fitNL)
+
