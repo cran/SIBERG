@@ -4,7 +4,7 @@ LazyData: true
 Date: 2017-07-11
 Title: Systematic Identification of Bimodally Expressed Genes Using
         RNAseq Data
-Version: 2.0.0
+Version: 2.0.1
 Author: Pan Tong, Kevin R. Coombes
 Maintainer: Kevin R. Coombes <krc@silicovore.com>
 Description: Provides models to identify bimodally expressed genes from
@@ -19,6 +19,6 @@ Imports: mclust
 Suggests: edgeR, doParallel
 URL: http://oompa.r-forge.r-project.org/
 NeedsCompilation: no
-Packaged: 2017-07-11 14:01:22 UTC; coom05
+Packaged: 2017-07-11 23:52:34 UTC; Kevin
 Repository: CRAN
-Date/Publication: 2017-07-11 17:33:03 UTC
+Date/Publication: 2017-07-12 08:21:05 UTC

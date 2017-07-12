@@ -46,7 +46,7 @@ options(continue=' ')
 
 \section{Introduction}
 \texttt{SIBERG} (\textbf{S}ystematic \textbf{I}dentification of
-\textbf{B}imodally \textbf{E}xp\textbf{R}essed \textbF{G}enes using RNAseq
+\textbf{B}imodally \textbf{E}xp\textbf{R}essed \textbf{G}enes using RNAseq
 data) is an R package that effectively identifies bimodally expressed
 genes from RNAseq data based on Bimodality Index. SIBER models the
 RNAseq data in the finite mixture modeling framework and incorporates
