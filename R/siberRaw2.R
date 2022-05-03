@@ -113,7 +113,7 @@ logLikNegBin0inflByOverdisp <- function(par, y=y, d) {
 fitNB <- function(y, d=NULL, inits=NULL, model='V', zeroPercentThr=0.2) {
   model <- try(match.arg(model, c('E', 'V'), several.ok=FALSE), silent=TRUE)
   # stop if model not recognizable.
-  if(class(model)=='try-error') stop('Only model E or V can be specified!\n')
+  if(inherits(model, 'try-error')) stop('Only model E or V can be specified!\n')
   percent0 <- mean(y==0, na.rm=TRUE) 
   res <- rep(NA, 7)	# res=c(mu1, mu2, phi1, phi2, pi1, logLik, BIC)
   names(res) <- c('mu1', 'mu2', 'phi1', 'phi2', 'pi1', 'logLik', 'BIC')
@@ -166,7 +166,7 @@ fitNB <- function(y, d=NULL, inits=NULL, model='V', zeroPercentThr=0.2) {
                           control=list(fnscale=-1, pgtol=1e-16, factr=1e3,
                                        maxit=3000), method="L-BFGS-B"),
                     silent=TRUE)
-    if(class(optimRes)!='try-error') {
+    if(!inherits(optimRes, 'try-error')) {
       if(model=='V') {
         res <- c(optimRes$par, optimRes$value)
       } else { # E model, formulate result such that it is like mu1, mu2,
@@ -194,7 +194,7 @@ fitNB <- function(y, d=NULL, inits=NULL, model='V', zeroPercentThr=0.2) {
                           upper=constrU, control=list(fnscale=-1, pgtol=1e-16,
                                                       factr=1e3, maxit=3000),
                           method="L-BFGS-B"), silent=TRUE)
-    if(class(optimRes)!='try-error') {
+    if(!inherits(optimRes, 'try-error')) {
       temp <- optimRes$par
       res[1:6] <- c(0, temp[1], 0, temp[2], temp[3], optimRes$value)
       res[7] <- getBIC(logLik=optimRes$value, nPar=3, nObs=length(y)) 
@@ -259,7 +259,7 @@ logLikGenPoi0inflByOverdisp <- function(par, y=y, d) {
 fitGP <- function(y, d=NULL, inits=NULL, model='V', zeroPercentThr=0.2) {
   model <- try(match.arg(model, c('E', 'V'), several.ok=FALSE), silent=TRUE)
 	# stop if model not recognizable.
-  if(class(model)=='try-error') stop('Only model E or V can be specified!\n')
+  if(inherits(model, 'try-error')) stop('Only model E or V can be specified!\n')
   percent0 <- mean(y==0, na.rm=TRUE) 
 	
   res <- rep(NA, 7)	# res=c(mu1, mu2, phi1, phi2, pi1, logLik, BIC)
@@ -311,7 +311,7 @@ fitGP <- function(y, d=NULL, inits=NULL, model='V', zeroPercentThr=0.2) {
                           control=list(fnscale=-1, pgtol=1e-16, factr=1e3,
                                        maxit=3000), method="L-BFGS-B"),
                     silent=TRUE)
-    if(class(optimRes)!='try-error') {
+    if(!inherits(optimRes, 'try-error')) {
       if(model=='V') {
         res <- c(optimRes$par, optimRes$value)
       } else { # E model, formulate result such that it is like mu1, mu2,
@@ -341,7 +341,7 @@ fitGP <- function(y, d=NULL, inits=NULL, model='V', zeroPercentThr=0.2) {
                           control=list(fnscale=-1, pgtol=1e-16, factr=1e3,
                                        maxit=3000), method="L-BFGS-B"),
                     silent=TRUE)
-    if(class(optimRes)!='try-error') {
+    if(!inherits(optimRes, 'try-error')) {
       temp <- optimRes$par
       res[1:6] <- c(0, temp[1], 0, temp[2], temp[3], optimRes$value)
       res[7] <- getBIC(logLik=optimRes$value, nPar=3, nObs=length(y)) 
@@ -365,7 +365,7 @@ fitLN <- function(y, base=10, eps=10, d=NULL, model='E',
   if(is.null(d)) d <- rep(1, length(y)) #	default, no normalization
   model <- try(match.arg(model, c('E', 'V'), several.ok=FALSE), silent=TRUE)
 	# stop if model not recognizable.
-  if(class(model)=='try-error') stop('Only model E or V can be specified!\n')
+  if(inherits(model, 'try-error')) stop('Only model E or V can be specified!\n')
   percent0 <- mean(y==0, na.rm=TRUE)
   res <- rep(NA, 7) # mu1, mu2, sigma1, sigma2, pi1, logLik, BIC
   names(res) <- c('mu1', 'mu2', 'sigma1', 'sigma2', 'pi1', 'logLik', 'BIC') # 1:7
@@ -411,7 +411,7 @@ logLik0inflatedLN <- function(y, mu, sigma, pi1, logLikToLN=TRUE) {
 extractMclustPar <- function(mc, modelName='E', logLikToLN=FALSE, dat=NA) {
   res <- rep(NA, 7)
   nPar <- ifelse(modelName=='V', 5, 4) # number of parameters
-  if(class(mc)!="try-error") {
+  if(!inherits(mc, "try-error")) {
 	# extract mu1, mu2
     res[1:2] <- mc$parameters$mean
 	# extract sigma1, sigma2
@@ -466,7 +466,7 @@ fitNL <- function(y, d=NULL, model='E') {
   if(is.null(d)) d <- rep(1, length(y)) #	default, no normalization
   model <- try(match.arg(model, c('E', 'V'), several.ok=FALSE), silent=TRUE)
 	# stop if model not recognizable.
-  if(class(model)=='try-error') stop('Only model E or V can be specified!\n')
+  if(inherits(model, 'try-error')) stop('Only model E or V can be specified!\n')
   res <- rep(NA, 7) # mu1, mu2, sigma1, sigma2, pi1, logLik, BIC
   names(res) <- c('mu1', 'mu2', 'sigma1', 'sigma2', 'pi1', 'logLik', 'BIC') # 1:7
   Dat <- y/d # normalization
@@ -513,7 +513,7 @@ SIBER <- function(y, d=NULL, model=c('LN', 'NB', 'GP', 'NL'),
   model <- try(match.arg(model, c('LN', 'NB', 'GP', 'NL'),
                          several.ok=FALSE), silent=TRUE)
 	# stop if model not recognizable.
-  if(class(model)=='try-error') {
+  if(inherits(model, 'try-error')) {
     stop('Only model LN, NB, GP or NL can be specified!\n')
   }
   res <- rep(NA, 7) 
