@@ -1,12 +1,12 @@
-8569c6fc1f7fc2bdfc88b18a25aef6d9 *DESCRIPTION
+842a161e52d2dfedf50aeebd3bfeab2c *DESCRIPTION
 7957ede50eedd880df490204ca3a1458 *NAMESPACE
 1535af0f61efc18ae2474bd3b210f54d *NEWS
 12dc4822dbb76279e6802de290d388a6 *R/siberRaw2.R
-102b640ed0072cc952c3bfc2f54d48b5 *build/vignette.rds
-ee2256ba4d02037cec1e4098ed9a8d0c *data/simDat.rda
+711347bde8c2a3970e882a2877fda88f *build/vignette.rds
+a8e08ba64c92bc3e69f7f4c5971752fe *data/simDat.rda
 f99b81353e9c15e30be8ec2b7034ffe3 *inst/doc/SIBER.R
 f69875afa802fde57bc60f802b2ff68c *inst/doc/SIBER.Rnw
-d79a51a737892ba8d70521d6568ae612 *inst/doc/SIBER.pdf
+a330f523dbfbdb173bd732faa9168de8 *inst/doc/SIBER.pdf
 2fc3330a586186b2af932069a5781a43 *man/SIBER.Rd
 1e25a7379d10456debca0477c95626b6 *man/fitGP.Rd
 ade61825290d33276d9e98a0a5df7ee9 *man/fitLN.Rd
